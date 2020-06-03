@@ -134,11 +134,11 @@ carro.adicionarPessoas = function(numeroPessoas){
 	}else if(numeroPessoas > (carro.assentos - carro.quantidadePessoas)){
 		return "Só cabem mais " + (carro.assentos - carro.quantidadePessoas) + " pessoas!";
 	}else if(carro.assentos-carro.quantidadePessoas == 1){
-		return "Já temos " + carro.quantidadePessoas + "pessoa no carro!";
+		return "Já temos " + carro.quantidadePessoas + " pessoa no carro!";
 
 	}else{
 		carro.quantidadePessoas += numeroPessoas;
-		return "Já temos " + carro.quantidadePessoas + "pessoas no carro!";
+		return "Já temos " + carro.quantidadePessoas + " pessoas no carro!";
 
 	}
 
@@ -189,7 +189,7 @@ carro.adicionarPessoas(3) //"Já temos 5 pessoas no carro!"
 
 // Tire 4 pessoas do carro.
 
-carro.quantidadePessoas -= 4; //1
+carro.adicionarPessoas(-4) //1
 
 // Adicione 10 pessoas no carro.
 
