@@ -13,6 +13,8 @@ var isTruthy = function ( a ){
 		return true;
 
 	return false;
+
+	//return !!a;
 };
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
@@ -37,6 +39,7 @@ isTruthy ( "10 valores" ); //true
 isTruthy ('outros valores'); //true
 isTruthy(1.34567); //true
 isTruthy( -1343); //true
+isTruthy(function() {});  //true
 
 
 /*
@@ -128,12 +131,13 @@ citado acima, no lugar de "pessoas".
 carro.adicionarPessoas = function(numeroPessoas){
 	if(carro.assentos === carro.quantidadePessoas){
 		return "O carro já está lotado!"
-	}else if(numeroPessoas > carro.assentos){
+	}else if(numeroPessoas > (carro.assentos - carro.quantidadePessoas)){
 		return "Só cabem mais " + (carro.assentos - carro.quantidadePessoas) + " pessoas!";
 	}else if(carro.assentos-carro.quantidadePessoas == 1){
 		return "Já temos " + carro.quantidadePessoas + "pessoa no carro!";
 
 	}else{
+		carro.quantidadePessoas += numeroPessoas;
 		return "Já temos " + carro.quantidadePessoas + "pessoas no carro!";
 
 	}
@@ -173,29 +177,24 @@ carro.obterMarcaModelo(); // Esse carro é um marca modelo
 
 // Adicione 2 pessoas no carro.
 
-carro.adicionarPessoas(2)
-//"Já temos 2 pessoas no carro!"
+carro.adicionarPessoas(2) //"Já temos 2 pessoas no carro!"
 
 // Adicione mais 4 pessoas no carro.
 
-carro.adicionarPessoas(4)
-//"Só cabem mais 3 pessoas!"
+carro.adicionarPessoas(4) //"Só cabem mais 3 pessoas!"
 
 // Faça o carro encher.
 
-carro.adicionarPessoas(3)
-//"Já temos 5 pessoas no carro!"
+carro.adicionarPessoas(3) //"Já temos 5 pessoas no carro!"
 
 // Tire 4 pessoas do carro.
 
-carro.quantidadePessoas -= 4;
-//1
+carro.quantidadePessoas -= 4; //1
 
 // Adicione 10 pessoas no carro.
 
-carro.adicionarPessoas(10)
-//"Só cabem mais 4 pessoas!"
-carro.adicionarPessoas(4)
+carro.adicionarPessoas(10) //"Só cabem mais 4 pessoas!"
+carro.adicionarPessoas(4)  //"Já temos 5 pessoas no carro!"
 
 // Quantas pessoas temos no carro?
 
