@@ -29,14 +29,14 @@ Crie uma função literal chamada `showName`. Essa função deve retornar o
 seu nome.
 */
 
-function showName(name){
-  return name;
+function showName(){
+  return 'name';
 }
 
 /*
 Declare uma variável chamada `varShowName` que recebe a função criada acima.
 */
-var varShowName = showName('maria');
+var varShowName = showName();
 
 /*
 Usando a variável criada acima, mostre no console o nome e o retorno da função
