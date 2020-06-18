@@ -9,10 +9,10 @@ e faça a indentação correta.
     das variáveis. Analise o que está sendo impresso no console para saber como
     resolver o problema corretamente.
     */
-    var five = 5;
+    var five = Number('5');
     console.log( five + ' é número?', typeof five === 'number' );
 
-    var concat = '10' + '10';
+    var concat = String(10) + String(10);
     console.log( '"' + concat + '" é uma string? E é igual a "1010"?', typeof concat === 'string' );
 
     /*
@@ -51,11 +51,34 @@ e faça a indentação correta.
     - Se for igual a qualquer um desses, ela deverá retornar "true".
     Caso contrário, "false".
     - O desafio é fazer o retorno sem usar "if" ou "switch".
-    */
+    
+    --> com ternário (que é um tipo de if)
     function isOperatorValid(operador){
         return (operador ===  '+') || (operador ==='-' ) || (operador ==='*') || (operador === '/') || (operador ==='%') ? true : false;
+    } 
+    
+    --> outra forma melhor [ achei muito interessante ]
+
+    function isOperatorValid(operador){
+        return operation[operador] !== undefined;
     }
 
+    --> essa forma não é muito interessante pois implica em código duplicado
+
+    function isOperatorValid(operador){
+        return (operador ===  '+') || (operador ==='-' ) || (operador ==='*') || (operador === '/') || (operador ==='%');
+    }
+
+    --> forma daora mas não muito legivel
+
+    function isOperatorValid(operador){
+        return !!operation[operador];
+    }     
+    */
+    
+    function isOperatorValid(operador){
+        return operation[operador] !== undefined;
+    }
 
     /*
     Agora vamos criar a calculadora.
@@ -76,11 +99,33 @@ e faça a indentação correta.
                 if(typeof a === 'number' && typeof b === 'number'){
                     return operation[operador](a,b);
                 }
+
+                return false;
             }
         }else{
             return false;
         }
     }
+
+    /*
+    Dicas:  - evitar o uso exagerado de if para melhorar a legibilidade do código. Modularizar o código é daora
+            - métodos começando com is e has --> convenção JS
+    function calculator(operator){
+        if(!isOperatorValid(operator)){
+            return false;
+        }
+
+        return function(a,b){
+                if(typeof a === 'number' && typeof b === 'number'){
+                    return operation[operador](a,b);
+                }
+
+                return false;
+        }
+    }
+
+
+    */
 
     /*
     Crie uma função chamada "showOperationMessage" que recebe três parâmetros:
@@ -104,6 +149,12 @@ e faça a indentação correta.
         if(!(isOperatorValid(operador)))
             return 'Operação '+ operador + ' não permitida!'
     }
+
+    /*
+    function showErrorMessage(operador){
+        return 'Operação '+ operador + ' não permitida!'
+    }
+    */
 
     /*
     Nossa calculadora está pronta! Agora vamos testá-la:
@@ -139,11 +190,12 @@ e faça a indentação correta.
     number1 = 2;
     number2 = 2;
 
-    if(isOperatorValid(operationSignal)){
+    if(sum){
         console.log(showOperationMessage(operationSignal,number1,number2),sum(number1,number2))
     }else{
         console.log(showErrorMessage(operationSignal))
     }
+
     
     /*
     Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
@@ -204,6 +256,5 @@ e faça a indentação correta.
     }else{
         console.log(showErrorMessage(operationSignal))
     }
-
 
 })();
