@@ -23,7 +23,7 @@
         'name': 'Maria',
         'age': 20,
         'weight': 63 ,
-        'birthday': '16th December 1999'
+        'birthday': new Date('16 de Dezembro')
     }
 
     /*
